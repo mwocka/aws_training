@@ -2,7 +2,7 @@
 
 ## AWS zones
 
-Aby uniknąc problemów z dostępnością wykorzystujemy wiele _zonów_, które posiadają ten sam content (replikuje się automatycznie). Przydatne w wszeliego rodzaju katastrofach np. gdy zaleje jeden AWS zone to drugi będzie serwować nam content aplikacji.
+Aby uniknąć problemów z dostępnością wykorzystujemy wiele _zonów_, które posiadają ten sam content (replikuje się automatycznie). Przydatne w wszelkiego rodzaju katastrofach np. gdy zaleje jeden AWS zone to drugi będzie serwować nam content aplikacji.
 
 ## AWS regions
 
@@ -10,7 +10,7 @@ _AWS_ dodaje często nowe regiony na dzień dzisiejszy 18 regionów. Region jest
 
 ## Edge Locations
 
-Mniejsze DC około 110 (obecnie). Detykowane dla 3-4 serwisów dostarczonych przez _AWS_. Używane też są do _Route 53_. Zapewnia to także cashowanie informacji przynajmniej w dwóch lokacjach.
+Mniejsze DC około 110 (obecnie). Dedykowane dla 3-4 serwisów dostarczonych przez _AWS_. Używane też są do _Route 53_. Zapewnia to także cashowanie informacji przynajmniej w dwóch lokacjach.
 
 ## Usługi:
 
@@ -26,15 +26,15 @@ _S3_ od simple storage service. Wielka **wada** tego rozwiązania to: S3 jest dl
 
 Use Case 1:
 
-Przechowywanie różnych mediów np. w buckecie. Każdy obiekt wrzucony do S3 otrzymuje URL. Jest to content **prywatny** ale możemy dodać odczyt dla wszystkich czyli upublicznić to. Pliki umieszczamy w **Bucket** czyli konenerze na pliki w konkretnym regionie. 
+Przechowywanie różnych mediów np. w buckecie. Każdy obiekt wrzucony do S3 otrzymuje URL. Jest to content **prywatny** ale możemy dodać odczyt dla wszystkich, czyli upublicznić to. Pliki umieszczamy w **Bucket** czyli kontenerze na pliki w konkretnym regionie. 
 
-Nazwa **bucketa** może być dowolna ale nazwa jest globalna więc musi być unikalna dla całego regionu. Przykładowy url to: `https://s3-ap-[region].amazon.com/[bucket-name]/[nazwa-pliku]`. **Domyślnie content w S3 jest prywatny**. Pod S3 możemy podpinać różne polityki bezpieczeństwa, które określają kto będzie miał dostęp do naszych zasobów.
+Nazwa **bucketa** może być dowolna, ale nazwa jest globalna więc musi być unikalna dla całego regionu. Przykładowy url to: `https://s3-ap-[region].amazon.com/[bucket-name]/[nazwa-pliku]`. **Domyślnie content w S3 jest prywatny**. Pod S3 możemy podpinać różne polityki bezpieczeństwa, które określają kto będzie miał dostęp do naszych zasobów.
 
 Maksymalny rozmiar pliku to 5TB. Możemy wrzucić nieskończenie wiele takich plików. 
 
 Use Case 2:
 
-Hostowanie stron. Odwołanie się do plików z innej domeny może wyrzucić błędy dlatego musimy dodać konfigurację CORS.
+Hostowanie stron. Odwołanie się do plików z innej domeny może wyrzucić błędy, dlatego musimy dodać konfigurację CORS.
 
 Use Case 3:
 
@@ -42,16 +42,16 @@ Data lake do trzymania danych właśnie w S3. Niestety nie ma możliwości wyszu
 
 Use Case 4:
 
-Narzędzie do trzymania backupów. Każdy serwis AWS wystawia API, poprzez które możemy zautomatyzować naszą pracę. Duże pliki między 5GB a 5TB są przesyłane poprzez części tzw. _multipard upload_. Uploadowanie plików można wykonać na dwa sposoby, albo będziemy to wrzucać bezpośrednio do S3 jak również do pośrednich, najbliższych serwerów, które poźniej będą to replikować.
+Narzędzie do trzymania backupów. Każdy serwis AWS wystawia API, poprzez które możemy zautomatyzować naszą pracę. Duże pliki między 5GB a 5TB są przesyłane poprzez części tzw. _multipard upload_. Uploadowanie plików można wykonać na dwa sposoby, albo będziemy to wrzucać bezpośrednio do S3 jak również do pośrednich, najbliższych serwerów, które później będą to replikować.
 
 ---
 
-**S3** nie nadaje się do wykorzystywania file systemów. Ponieważ jest to replikowane do wielu avability zone co uniemożliwa dostępów w natychmiastowym czasie do aktualizowanych plików.
+**S3** nie nadaje się do wykorzystywania file systemów. Ponieważ jest to replikowane do wielu avability zone co uniemożliwia dostępów w natychmiastowym czasie do aktualizowanych plików.
 
 **Za co płacimy:**
 
 + za ilość danych,
-+ za transfer do innego regionu czy internetu,
++ za transfer do innego regionu czy Internetu,
 + za PUT, COPY, POST, LIST czy GET.
 
 **Amazon Glacier:** coraz mniej używany, serwis, służący do backupów. Jest to serwis wbudowany w S3. Płacimy mało za storage ale nie mamy danych dostępnych online. Musimy najpierw poprosić o wyciągnięcie tych danych na zewnątrz.
@@ -64,13 +64,13 @@ Chcemy trzymać dane w chmurze - po jakim czasie mają być one usunięte!
 
 ### Wybieranie regionu
 
-Odpowiednie przetrzymywanie danych w regionach musi być zgodne z prawem w państwie w którym się znajdujemu. Drugą istotną rzeczą jest odległość. W regionie również trzeba sprawdzić czy wszystkie serwisy _AWS-owe_ są dostępne. Dlatego trzeba **w momencie** tworzenia architektury, zdefiniować w jakich regionach środowisko będzie uruchomione. Żeby wszystkie serwisy były dostępne wszędzie.
+Odpowiednie przetrzymywanie danych w regionach musi być zgodne z prawem w państwie w którym się znajdujemy. Drugą istotną rzeczą jest odległość. W regionie również trzeba sprawdzić czy wszystkie serwisy _AWS-owe_ są dostępne. Dlatego trzeba **w momencie** tworzenia architektury, zdefiniować w jakich regionach środowisko będzie uruchomione. Żeby wszystkie serwisy były dostępne wszędzie.
 
 **Za co płacimy:**
 
 + ceny różnią się od regionu
 
-### Jak podpiąc domenę do S3
+### Jak podpiąć domenę do S3
 
 Najprościej za pomocą _route 53_. Nazwa domeny musi się pokrywać z nazwą bucketa.
 
@@ -78,16 +78,30 @@ Najprościej za pomocą _route 53_. Nazwa domeny musi się pokrywać z nazwą bu
 
 EC2 - _elastic cloud computer_ - czyli serwis mogący przetwarzać dane. Używany od hostingu po pełne funkcje serwera. Posiada _ulotne_ resources co dostarcza wysoką elastyczność. Czyli dostosowywanie infrastruktury do naszej aplikacji. 
 
-**Free to make mistakes** - kiedy Amazon dostarczy lepsze funkcjonalności my w krótkim i szybkim czasie możemy się przepiąć. Nic nie stoi na prszeszkodzie, żeby eksperymentować i uruchamiać nasz system na różnych typach instancji. Dlatego, że płacimy za godziny.
+**Free to make mistakes** - kiedy Amazon dostarczy lepsze funkcjonalności my w krótkim i szybkim czasie możemy się przepiąć. Nic nie stoi na przeszkodzie, żeby eksperymentować i uruchamiać nasz system na różnych typach instancji. Dlatego, że płacimy za godziny.
 
 **AMI** czyli nasze obrazy mogą być, które są _pre-build_, dostępne z _marketplace_ jak również mogą być tworzone przez nas. Taki obraz następnie może być uruchomiony _EC2_.
 
 Przygotowane AMI możemy wykorzystać w:
 
-+ szybko uruchamiać nasze aplikcaji,
++ szybko uruchamiać nasze aplikacji,
 + backupowanie naszego softu,
 + pod spodem AMI jest S3
 
-**User Data** - mechanizm pozwalający na wstrzyknięcie na starcie konfiguracje serwera. To się uruchamia **tylko raz** przy pierwszym uruchomieniu maszyny. Wykorztywane często do uruchamienia agenta np. puppeta, gdzie następnie puppet będzie zarządzał tą maszyną.
+#### User Data dla EC2
 
-**Instance storage** to dyski dla maszyn EC2, które są efemeryczne. Nowy system **EBS** czyli podsystem serwisu EC2, który żyje osobno i dostarcza nam dyski sieciowe. Są to dwa systemy dyskowe używane dla maszyn EC2.
+**User Data** - mechanizm pozwalający na wstrzyknięcie na starcie konfiguracje serwera. To się uruchamia **tylko raz** przy pierwszym uruchomieniu maszyny. Wykorzystywane często do uruchamiania agenta np. puppeta, gdzie następnie puppet będzie zarządzał tą maszyną.
+
+#### Storage dla EC2
+
+**Instance storage** to dyski dla maszyn EC2, które są efemeryczne. Nowy system **EBS** czyli podsystem serwisu EC2, który żyje osobno i dostarcza nam dyski sieciowe. Są to dwa systemy dyskowe używane dla maszyn EC2. Instance storage jest w cenie maszyny **EC2**, a przepustowość jest dużo większa niż w przypadku **EBS**. 
+
+Wolumeny **EBS** mogą być w różnych konfiguracjach w SSD jak i HDD. Są to różne typy wolumenów, które muszą zostać odpowiednio dobrane dla różnych usług.
+
+**Oznaczenia Instancji EC2:**
+
++ m - nazwa rodziny
++ 5 - generacja
++ large - rozmiar
+
+Typów instancji jest bardzo dużo, dlatego możemy eksperymentować nie narażając się na zakup serwerów i podzespołów.
