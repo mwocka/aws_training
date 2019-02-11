@@ -111,4 +111,6 @@ Za co płacimy:
 + płatność lub deklaracja płatności z góry na rok lub 3 lata,
 + uruchamianie maszyn na wolnych zasobach Amazona
 
-Największy priorytet ma Reserved Instances - czyli to co zostało z góry opłacone. W przypdaku kryzysowej sytuacji te instancje są priorytetowo uruchamiane. 
+Największy priorytet ma Reserved Instances - czyli to co zostało z góry opłacone. W przypdaku kryzysowej sytuacji te instancje są priorytetowo uruchamiane.
+
+Bardzo ważną rzeczą w AWS są **tagi**, którą podajemy jako klucz-wartość. Pomaga to zarządzać serwerami stworzonymi w AWS. Po tagach też możemy rozbić rachunek, co pokazuje np. ile kosztuje nas środowisko produkcyjne, a ile testowe.
