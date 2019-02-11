@@ -24,7 +24,6 @@ _S3_ od simple storage service. Wielka **wada** tego rozwiązania to: S3 jest dl
 
 ---
 
-
 Use Case 1:
 
 Przechowywanie różnych mediów np. w buckecie. Każdy obiekt wrzucony do S3 otrzymuje URL. Jest to content **prywatny** ale możemy dodać odczyt dla wszystkich czyli upublicznić to. Pliki umieszczamy w **Bucket** czyli konenerze na pliki w konkretnym regionie. 
@@ -45,6 +44,8 @@ Use Case 4:
 
 Narzędzie do trzymania backupów. Każdy serwis AWS wystawia API, poprzez które możemy zautomatyzować naszą pracę. Duże pliki między 5GB a 5TB są przesyłane poprzez części tzw. _multipard upload_. Uploadowanie plików można wykonać na dwa sposoby, albo będziemy to wrzucać bezpośrednio do S3 jak również do pośrednich, najbliższych serwerów, które poźniej będą to replikować.
 
+---
+
 **S3** nie nadaje się do wykorzystywania file systemów. Ponieważ jest to replikowane do wielu avability zone co uniemożliwa dostępów w natychmiastowym czasie do aktualizowanych plików.
 
 **Za co płacimy:**
@@ -52,3 +53,6 @@ Narzędzie do trzymania backupów. Każdy serwis AWS wystawia API, poprzez któr
 + za ilość danych,
 + za transfer do innego regionu czy internetu,
 + za PUT, COPY, POST, LIST czy GET.
+
+**Amazon Glacier:** coraz mniej używany, serwis, służący do backupów. Jest to serwis wbudowany w S3. Płacimy mało za storage ale nie mamy danych dostępnych online. Musimy najpierw poprosić o wyciągnięcie tych danych na zewnątrz.
+
