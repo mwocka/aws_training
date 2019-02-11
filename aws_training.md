@@ -114,3 +114,19 @@ Za co płacimy:
 Największy priorytet ma Reserved Instances - czyli to co zostało z góry opłacone. W przypdaku kryzysowej sytuacji te instancje są priorytetowo uruchamiane.
 
 Bardzo ważną rzeczą w AWS są **tagi**, którą podajemy jako klucz-wartość. Pomaga to zarządzać serwerami stworzonymi w AWS. Po tagach też możemy rozbić rachunek, co pokazuje np. ile kosztuje nas środowisko produkcyjne, a ile testowe.
+
+## Bazy danych
+
+Wiele czynników należy wziąć pod uwagę np.: czy baza się skaluje, ile będzie odczytów i zapisów, wymagania dotyczące storage-ów, dostępność bazy danych itp.
+
+Typy baz danych: **relacyjne**, **nie-relacyjne**. Bazy nie relacyjne lepiej się skalują i lepiej znoszą pracę pod względem odczytu i zapisu.
+
+### Amazon RDS
+
+Relacjna baza danych, która wspiera skalowanie. Pod spodem może być wiele silników baz danych takie jak: MSQL czy Amazon Aurora. Ten ostatni silnik jest szybszy, replikuje dane na różnych _Avability zone_ itd.
+
+### DynamoDB
+
+Nie relacyjna baza danych dostarczona przez AWS. Jest szybka, łatwo skalowalna, pozwala na _serverless computing_. Możemy przypisać ile będziemy mieć odczytu i zapisu w danych tabelach.
+
+Bezpieczeństwo w połączeniach z bazami danych zapewnia protokół SSL. Do migracji danych używamy dedykowane do tego serwisy np. AWS Database Migration Service.
