@@ -22,6 +22,9 @@ _S3_ od simple storage service. Wielka **wada** tego rozwiązania to: S3 jest dl
 * 99,99999999999% dostępności
 * Wyzwalanie wydarzeń - np. po operacji na pliku możemy zareagować
 
+---
+
+
 Use Case 1:
 
 Przechowywanie różnych mediów np. w buckecie. Każdy obiekt wrzucony do S3 otrzymuje URL. Jest to content **prywatny** ale możemy dodać odczyt dla wszystkich czyli upublicznić to. Pliki umieszczamy w **Bucket** czyli konenerze na pliki w konkretnym regionie. 
