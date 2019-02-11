@@ -12,9 +12,7 @@ _AWS_ dodaje często nowe regiony na dzień dzisiejszy 18 regionów. Region jest
 
 Mniejsze DC około 110 (obecnie). Dedykowane dla 3-4 serwisów dostarczonych przez _AWS_. Używane też są do _Route 53_. Zapewnia to także cashowanie informacji przynajmniej w dwóch lokacjach.
 
-## Usługi:
-
-### Amazon S3
+## Amazon S3
 
 _S3_ od simple storage service. Wielka **wada** tego rozwiązania to: S3 jest dla całego regionu. Jak siądzie to cały region straci dostęp do tej usługi.
 
@@ -105,3 +103,12 @@ Wolumeny **EBS** mogą być w różnych konfiguracjach w SSD jak i HDD. Są to r
 + large - rozmiar
 
 Typów instancji jest bardzo dużo, dlatego możemy eksperymentować nie narażając się na zakup serwerów i podzespołów.
+
+Za co płacimy:
+
++ za godzine działania instancji,
+    * płacimy za zużycie - dla Ubuntu i Amazon Linux naliczanie sekundowe, dla reszty naliczane godzinowe,
++ płatność lub deklaracja płatności z góry na rok lub 3 lata,
++ uruchamianie maszyn na wolnych zasobach Amazona
+
+Największy priorytet ma Reserved Instances - czyli to co zostało z góry opłacone. W przypdaku kryzysowej sytuacji te instancje są priorytetowo uruchamiane. 
