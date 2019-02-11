@@ -69,3 +69,13 @@ Odpowiednie przetrzymywanie danych w regionach musi być zgodne z prawem w pańs
 **Za co płacimy:**
 
 + ceny różnią się od regionu
+
+### Jak podpiąc domenę do S3
+
+Najprościej za pomocą _route 53_. Nazwa domeny musi się pokrywać z nazwą bucketa.
+
+## Amazon EC2
+
+EC2 - _elastic cloud computer_ - czyli serwis mogący przetwarzać dane. Używany od hostingu po pełne funkcje serwera. Posiada _ulotne_ resources co dostarcza wysoką elastyczność. Czyli dostosowywanie infrastruktury do naszej aplikacji. 
+
+
