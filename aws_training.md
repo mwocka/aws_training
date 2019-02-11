@@ -88,4 +88,6 @@ Przygotowane AMI możemy wykorzystać w:
 + backupowanie naszego softu,
 + pod spodem AMI jest S3
 
-**User Data** - mechanizm pozwalający na wstrzyknięcie na starcie konfiguracje serwera. To się uruchamia **tylko raz** podczas startu. Wykorztywane często do uruchamienia agenta np. puppeta, gdzie następnie puppet będzie zarządzał tą maszyną.
+**User Data** - mechanizm pozwalający na wstrzyknięcie na starcie konfiguracje serwera. To się uruchamia **tylko raz** przy pierwszym uruchomieniu maszyny. Wykorztywane często do uruchamienia agenta np. puppeta, gdzie następnie puppet będzie zarządzał tą maszyną.
+
+**Instance storage** to dyski dla maszyn EC2, które są efemeryczne. Nowy system **EBS** czyli podsystem serwisu EC2, który żyje osobno i dostarcza nam dyski sieciowe. Są to dwa systemy dyskowe używane dla maszyn EC2.
