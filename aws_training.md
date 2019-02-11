@@ -29,3 +29,23 @@ Przechowywanie różnych mediów np. w buckecie. Każdy obiekt wrzucony do S3 ot
 Nazwa **bucketa** może być dowolna ale nazwa jest globalna więc musi być unikalna dla całego regionu. Przykładowy url to: `https://s3-ap-[region].amazon.com/[bucket-name]/[nazwa-pliku]`. **Domyślnie content w S3 jest prywatny**. Pod S3 możemy podpinać różne polityki bezpieczeństwa, które określają kto będzie miał dostęp do naszych zasobów.
 
 Maksymalny rozmiar pliku to 5TB. Możemy wrzucić nieskończenie wiele takich plików. 
+
+Use Case 2:
+
+Hostowanie stron. Odwołanie się do plików z innej domeny może wyrzucić błędy dlatego musimy dodać konfigurację CORS.
+
+Use Case 3:
+
+Data lake do trzymania danych właśnie w S3. Niestety nie ma możliwości wyszukiwania w S3 co może być bardzo dużą wadą. Aby pobrać plik muszę znać ten plik. 
+
+Use Case 4:
+
+Narzędzie do trzymania backupów. Każdy serwis AWS wystawia API, poprzez które możemy zautomatyzować naszą pracę. Duże pliki między 5GB a 5TB są przesyłane poprzez części tzw. _multipard upload_. Uploadowanie plików można wykonać na dwa sposoby, albo będziemy to wrzucać bezpośrednio do S3 jak również do pośrednich, najbliższych serwerów, które poźniej będą to replikować.
+
+**S3** nie nadaje się do wykorzystywania file systemów. Ponieważ jest to replikowane do wielu avability zone co uniemożliwa dostępów w natychmiastowym czasie do aktualizowanych plików.
+
+**Za co płacimy:**
+
++ za ilość danych,
++ za transfer do innego regionu czy internetu,
++ za PUT, COPY, POST, LIST czy GET.
