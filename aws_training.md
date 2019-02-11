@@ -56,3 +56,16 @@ Narzędzie do trzymania backupów. Każdy serwis AWS wystawia API, poprzez któr
 
 **Amazon Glacier:** coraz mniej używany, serwis, służący do backupów. Jest to serwis wbudowany w S3. Płacimy mało za storage ale nie mamy danych dostępnych online. Musimy najpierw poprosić o wyciągnięcie tych danych na zewnątrz.
 
+**Lifecycle Policies** - polityka czasu życia obiektów. Które pomagają w zachowaniu porządku jak i oszczędności. Np. po 30 dniach plik zmieni się na S3 IA (tańszy) po 60 na Glaciera a po roku plik jest usuwany.
+
+Use case:
+
+Chcemy trzymać dane w chmurze - po jakim czasie mają być one usunięte!
+
+### Wybieranie regionu
+
+Odpowiednie przetrzymywanie danych w regionach musi być zgodne z prawem w państwie w którym się znajdujemu. Drugą istotną rzeczą jest odległość. W regionie również trzeba sprawdzić czy wszystkie serwisy _AWS-owe_ są dostępne. Dlatego trzeba **w momencie** tworzenia architektury, zdefiniować w jakich regionach środowisko będzie uruchomione. Żeby wszystkie serwisy były dostępne wszędzie.
+
+**Za co płacimy:**
+
++ ceny różnią się od regionu
