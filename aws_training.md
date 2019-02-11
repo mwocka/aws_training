@@ -78,4 +78,14 @@ Najprościej za pomocą _route 53_. Nazwa domeny musi się pokrywać z nazwą bu
 
 EC2 - _elastic cloud computer_ - czyli serwis mogący przetwarzać dane. Używany od hostingu po pełne funkcje serwera. Posiada _ulotne_ resources co dostarcza wysoką elastyczność. Czyli dostosowywanie infrastruktury do naszej aplikacji. 
 
+**Free to make mistakes** - kiedy Amazon dostarczy lepsze funkcjonalności my w krótkim i szybkim czasie możemy się przepiąć. Nic nie stoi na prszeszkodzie, żeby eksperymentować i uruchamiać nasz system na różnych typach instancji. Dlatego, że płacimy za godziny.
 
+**AMI** czyli nasze obrazy mogą być, które są _pre-build_, dostępne z _marketplace_ jak również mogą być tworzone przez nas. Taki obraz następnie może być uruchomiony _EC2_.
+
+Przygotowane AMI możemy wykorzystać w:
+
++ szybko uruchamiać nasze aplikcaji,
++ backupowanie naszego softu,
++ pod spodem AMI jest S3
+
+**User Data** - mechanizm pozwalający na wstrzyknięcie na starcie konfiguracje serwera. To się uruchamia **tylko raz** podczas startu. Wykorztywane często do uruchamienia agenta np. puppeta, gdzie następnie puppet będzie zarządzał tą maszyną.
