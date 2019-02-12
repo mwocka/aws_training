@@ -203,3 +203,15 @@ Wypinanie aplikacji jest stopniowe, najpierw przekierowywane są requesty a pozn
 ## Amazon Route 53
 
 DNS-owy serwis, który może przekierować ruch pomiędzy regionami. Bogaty zestaw możliwości, który pomaga dostarczyć naszą aplikację. Wspiera też możliwość _anycast_.
+
+## IAM
+
+Bezpieczeństwo konta AWS - defaultowo założone konto jest rootowe, które nie ma graniczeń. Za pomocą IAM możemy utworzyć usera z prawami administracyjnymi. Konta _roota_ nie używam! IAM pozwala na stworzenie użytkowników i grup, pozwala na zewnętrzną autoryzację itd. Stworzony user nie ma defaultowo żadnych uprawnień.
+
+Najpierw sprawdzany jest: _Deny_ a następnie _Allow_ w nadawaniu uprawnień użytkownikowi.
+
+**Resource-Based** - polityka bezpieczeństwa umożliwiająca dopięcie jsona z polityką bezpieczeństwa
+
+**Identity-Based** - dodanie specjalnie uprawnień do IAM
+
+Gdy mamy usera, który jest potrzebny na jeden dzień to możemy wykorzystać IAM roles. Role może otrzymać każdy nawet osoba, która uwierzytelnia się za pomocą Googla.
