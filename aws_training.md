@@ -185,3 +185,9 @@ Internet gateway -> route table -> ACL -> Security Groups -> Application
 2. Czy maszyna EC2 jest w podsieci, która ma routing na internet gateway
 3. Czy aplikacja ma publiczny adres czy elastic IP
 4. Sprawdzamy ACL i SGs
+
+VGW (Virtual Private Gateway) taki VPN pomiędzy data center a naszym VPC. Możemy mieć też własne łącze (DX) do AWS. 1 Gb, 10 Gb lub mniejsze.
+
+**Jak połączyć ze sobą VPC** - używamy VPC Peering, a adresy nie mogą się **nakładać**. Mam też rozwiązanie Peering Multiple VPCs, żeby połączyć więcej VPCs na raz. Nazywa się to _Transit Gateway_.
+
+**VPC Endpoints** - prywatna rura to serwisów AWS, która może być skonfigurowana z VPC.
