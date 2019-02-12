@@ -238,3 +238,16 @@ Dwa typy elastyczności:
 Badanie zwiększonego ruchu tyczy się monitoringu a konkretnie badanie _health checków_ czy sprawdzanie wydajności maszyn. Do monitorowania serwisów wykorzystujemy narzędzie jakim jest **CloudWatch**.
 
 Serwisy wysyłają do CloudWatch informacje, a następnie na tej podstawie możemy uruchomić alarmy czy wysyłać powiadomienia. Możemy też wysyłać logi z maszyny do CloudWatcha gdzie następnie jest to wrzucane do jednego miejsca np. bucketa.
+
+
+### Autoscaling
+
+Usługa pozwalająca na automatyczne skalowanie różnych serwisów. Ubijanie maszyn działa w taki sposób, że ma connection draining, żeby użytkownicy nie zauważyli zmiany. Autoscaling ma zasięg regionalny. Możemy używać skalowania w oparciu o metryki, w oparciu o konkretne dni lub za pomocą machine learning.
+
+Bazy danych się również skalują, ale za pomocą tworzenia replik. W przypadku Aurory do nawet 15 replik naszej bazy. Bazy no-sql skalują się lepiej.
+
+## Automatyzacja
+
+Możemy nie tylko "klikać" ale również możemy opisać infrastrukturę za pomocą kodu. Rekomendacją AWS jest tworzenie infry za pomocą kodu wtedy możemy to wersjonować, pozwolić na audyty itp.
+
+AWS daje nam CloudFormation co pozwala na zapisanie infrastruktury za pomocą yaml-a lub jsona. Nazywa się to **Infrastructure as Code**.   
