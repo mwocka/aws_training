@@ -156,3 +156,32 @@ _Publi subnets_ - tworzymy _Internet gateway_ i podpinay do subnetu.
 **NAT gateway** - czyli chcemy się dostać np. do internetu ale tylko z jednej strony.  NAT gateway musi być w podsieci publicznej, a z prywatnej podsieci ustawiamy routing na NAT gateway np. `0.0.0.0/0 <nat-id>`. 
 
 Do prywtnych subnetów możemy podpiąć się poprzez VPN - w AWS nazywa się to _Virtual Private Gateway_.
+
+Rekomendacją AWS jest umieszczanie wszystkiego w prywatnych subnetach i wykorzystywanie narzędzi AWS do kierowania dostępami do nich.
+
+### Elastic Network Interfaces
+
+Jest to wirtualny intersejs sieciowy, który może być przepinany pomiędzy maszynami EC2 w tej samej Availability Zone. Każdy intefrejs ma swój prywatny IP adres i adres MAC.
+
+Stosowany do np. zarządzania maszyną za pomocą SSH.
+
+Elastic Network Interfaces posiadają również _Elastic IP Adresses_ czyli mechanizm do stworzenia niezmiennego adresu IP, który jest publiczny. 5 takich adresów może być stworzonych w jednym regionie.
+
+## Security Groups
+
+Jest to firewall, gdzie gdy pozwalamy na wyjście to taki pakiet może też wejść tzw. statefull. Po dodaniu security group cały ruch jest zablokowany. 
+
+Security group use case: do strony WWW pozwalam na dostęp wszystkim (0.0.0.0/0) poprzez port 443 (https). Do aplikacji _App_ dostanie się tylko Web po porcie 80. Natomiast do bazy danych dostęp jest na porcie 3306 a source jest ustawiony na te aplikacje. Pomaga to uniknąć hardcodowania IP. 
+
+Kolejnym takim rozwiązaniem są ACL. Przypinany bezpośrednio do podsieci. Podajemy wejścia i wyjścia, i mamy możliwości _Allow_ i _Deny_. Tylko 20 reguł na jedną ACL!
+
+Kanapka security:
+
+Internet gateway -> route table -> ACL -> Security Groups -> Application
+
+**WAŻNE**
+
+1. Czy VPC ma podpięty internet gateway
+2. Czy maszyna EC2 jest w podsieci, która ma routing na internet gateway
+3. Czy aplikacja ma publiczny adres czy elastic IP
+4. Sprawdzamy ACL i SGs
