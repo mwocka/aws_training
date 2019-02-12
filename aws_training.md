@@ -1,8 +1,8 @@
-# AWS training
+# AWS training - dzień pierwszy
 
 ## AWS zones
 
-Aby uniknąć problemów z dostępnością wykorzystujemy wiele _zonów_, które posiadają ten sam content (replikuje się automatycznie). Przydatne w wszelkiego rodzaju katastrofach np. gdy zaleje jeden AWS zone to drugi będzie serwować nam content aplikacji.
+Aby uniknąć problemów z dostępnością wykorzystujemy wiele _zonów_, które posiadają ten sam content (replikuje się automatycznie). Przydatne w wszelkiego rodzaju katastrofach np. gdy zaleje jeden AWS zone to drugi będzie serwować nam content aplikacji. Każdy **Availability Zone** jest od siebie odseparowany.
 
 ## AWS regions
 
@@ -130,3 +130,15 @@ Relacjna baza danych, która wspiera skalowanie. Pod spodem może być wiele sil
 Nie relacyjna baza danych dostarczona przez AWS. Jest szybka, łatwo skalowalna, pozwala na _serverless computing_. Możemy przypisać ile będziemy mieć odczytu i zapisu w danych tabelach.
 
 Bezpieczeństwo w połączeniach z bazami danych zapewnia protokół SSL. Do migracji danych używamy dedykowane do tego serwisy np. AWS Database Migration Service.
+
+# AWS Training - dzień drugi
+
+## Networking in AWS 
+
+VPC - moja prywatna sieć w AWS, niedostępna dla innych kont/użytkowników w AWS. Taki kontener na maszyny EC2 itp. Jest to logiczna dedykowana sieć gdzie definiujemy wszelkie reguły co może wejść i wyjść z naszej sieci.
+
+**VPC** może być stworzone po 5 w każdym regionie. Może zawierać kilka **Availability zone** gdzie przynajmniej powinna zawierać 2 takie zony.
+
+VPC używa się przedewszystkim do odeparowania środowiska. Np. środowisko produkcyjne i testowe jest oddzielne.
+
+Więcej przypadków wykorzytania VPC jest na slajdach. Np. jeśli chcesz mieć 3 środowiska to załóż trzy konta na AWS i na każdym uruchom VPC.
