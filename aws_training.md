@@ -215,3 +215,26 @@ Najpierw sprawdzany jest: _Deny_ a następnie _Allow_ w nadawaniu uprawnień uż
 **Identity-Based** - dodanie specjalnie uprawnień do IAM
 
 Gdy mamy usera, który jest potrzebny na jeden dzień to możemy wykorzystać IAM roles. Role może otrzymać każdy nawet osoba, która uwierzytelnia się za pomocą Googla.
+
+Use Cases:
+
+* Dostęp do AWS poprzez serwisów
+* Uwierzytelnienie poprzez inne serwisy
+* Zmiana dostępu do serwisów dla różnych kont AWS
+
+Na koncie administracyjnym tworzymy userów, a do kont na produkcje np. dostajemy się poprzez role.
+
+## High Availability Factors
+
+Mamy przygotowane i redundantne zasoby, nasza aplikacja pozwala na skalowanie oraz mamy mechanizm na odtworzenie naszej infrastruktury np. na innej zonie.
+
+Elastyczność pozwala nam na inteligentne skalowanie infrastruktury jak również nie marnować zasobów i pieniędzy.
+
+Dwa typy elastyczności:
+
+* Oparte o czas - wyłączanie zasobów, które nie są wykorzystywane,
+* Oparte o wolumen - używanie tyle zasobów ile jest wykorzystywane - skalowanie automatyczne
+
+Badanie zwiększonego ruchu tyczy się monitoringu a konkretnie badanie _health checków_ czy sprawdzanie wydajności maszyn. Do monitorowania serwisów wykorzystujemy narzędzie jakim jest **CloudWatch**.
+
+Serwisy wysyłają do CloudWatch informacje, a następnie na tej podstawie możemy uruchomić alarmy czy wysyłać powiadomienia. Możemy też wysyłać logi z maszyny do CloudWatcha gdzie następnie jest to wrzucane do jednego miejsca np. bucketa.
