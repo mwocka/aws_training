@@ -142,3 +142,17 @@ VPC - moja prywatna sieć w AWS, niedostępna dla innych kont/użytkowników w A
 VPC używa się przedewszystkim do odeparowania środowiska. Np. środowisko produkcyjne i testowe jest oddzielne.
 
 Więcej przypadków wykorzytania VPC jest na slajdach. Np. jeśli chcesz mieć 3 środowiska to załóż trzy konta na AWS i na każdym uruchom VPC.
+
+### VPC a adresy IP
+
+Każdy VPC posiada przedział prywatnych adresów IP, z notacją CIDR czyli adresowanie za pomocą maski. Np. 0.0.0.0/0 to wszystkie adresy, 192.168.1.0/24 to 254 adresy do użycia, gdzie 5 adresów rezerwuje AWS, 4 pierwsze i ostatni. Czyli możemy użyć 249 adresów.
+
+Każde VPC dzielimy na kilka podsieci, (skrajny przypadek - jeden VPC jedna podsieć). Każdy subnet jest stworzony za pomocą CIDR. Każda podsieć jest przechowywana w konkretnej Avability Zone.
+
+Możemy też tworzyć własne tablice routingu. Możemy zatem wydzielić routing żeby połączyć nasz subnet do Internetu (public subnets). Jeśli nie mamy routingu do Internet gatewy to nasz subnet jest prywatny.
+
+_Publi subnets_ - tworzymy _Internet gateway_ i podpinay do subnetu.
+
+**NAT gateway** - czyli chcemy się dostać np. do internetu ale tylko z jednej strony.  NAT gateway musi być w podsieci publicznej, a z prywatnej podsieci ustawiamy routing na NAT gateway np. `0.0.0.0/0 <nat-id>`. 
+
+Do prywtnych subnetów możemy podpiąć się poprzez VPN - w AWS nazywa się to _Virtual Private Gateway_.
