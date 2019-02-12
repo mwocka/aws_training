@@ -191,3 +191,15 @@ VGW (Virtual Private Gateway) taki VPN pomiędzy data center a naszym VPC. Może
 **Jak połączyć ze sobą VPC** - używamy VPC Peering, a adresy nie mogą się **nakładać**. Mam też rozwiązanie Peering Multiple VPCs, żeby połączyć więcej VPCs na raz. Nazywa się to _Transit Gateway_.
 
 **VPC Endpoints** - prywatna rura to serwisów AWS, która może być skonfigurowana z VPC.
+
+## Elastic Load Balancing (ELB)
+
+Load balancer - maszyny chowamy do prywatnych sieci, a prze loadbalancer dobijamy się do naszych serwerów webowych. **ELB** używa HTTPS, HTTP, TCP i SSL. Może być wystawiony publicznie jak i nie. Rozwijane aktuanie dwa typy ELB dla warstwy 7 jak i 4. Dzięki temu mamy wysoką wydajność i różne security features. 
+
+Wypinanie aplikacji jest stopniowe, najpierw przekierowywane są requesty a pozniej odpinana jest apka. Nie jest to domyślnie włączone. Należy włączyć **draining**.
+
+**Load Balancer to jeden z nielicznych działających serwisów na poziomie regionów.**
+
+## Amazon Route 53
+
+DNS-owy serwis, który może przekierować ruch pomiędzy regionami. Bogaty zestaw możliwości, który pomaga dostarczyć naszą aplikację. Wspiera też możliwość _anycast_.
