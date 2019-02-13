@@ -250,4 +250,46 @@ Bazy danych się również skalują, ale za pomocą tworzenia replik. W przypadk
 
 Możemy nie tylko "klikać" ale również możemy opisać infrastrukturę za pomocą kodu. Rekomendacją AWS jest tworzenie infry za pomocą kodu wtedy możemy to wersjonować, pozwolić na audyty itp.
 
-AWS daje nam CloudFormation co pozwala na zapisanie infrastruktury za pomocą yaml-a lub jsona. Nazywa się to **Infrastructure as Code**.   
+AWS daje nam CloudFormation co pozwala na zapisanie infrastruktury za pomocą yaml-a lub jsona. Nazywa się to **Infrastructure as Code**.
+ 
+# AWS training - dzień trzeci
+
+## Cashowanie
+
+Stosowane do skrócenia czasu pobierania treści. Jest to CDN - musimy się zastanowić co jest warte cashowania. Cashowanie jest potrzebne ponieważ mamy większe zadowolenie klienta. 
+
+## Sticky sessions
+
+Trzymanie sesji, żeby nie ubić maszyny, na której np. ktoś robi zakupy. Dlatego sesje trzymamy np. w dynamoDB niestety to wciąż są stracone jakieś milisekundy. Dlatego AWS dodał nowy komponent Amazon DynamoDB Accelerator, co pozwala na zejście do mikrosekund.
+
+## ElastiCashe
+
+Kolejny serwis do trzymania cashu. Dostajemy infrastrukture: klaster z nodami gdzie pod spodem jest _Redis_ i _Memcached_. 
+
+## Serwisy do kolejkowania
+
+### Amazon SQS
+Komunikaty ladujące na kolejkach będą wisieć tak długo aż ktoś tego nie skasuje lub sam TTL juz minie (defaultowo 4 dni). Stosowane do tego żeby przetworzyć ogromne ilości zapytań. Są to systemy asynchroniczne. Są o wiele bardziej odporne na awarie. 
+
+## Amazon SNS
+Tworzymy topic gdzie następnie dodajemy subskrybentów (e-mail, sms, lambda i inne). Stosowany do alertów do powiadomień itd.
+
+## Microservisy i architektura Serverless
+
+### Mikroserwisy
+
+Zamiast monolitu aplikacji budujemy mikroserwisy, które zależą od siebie. Gdy mamy mikroserwisy możemy skalować różne elementy np. sklep, a koszyk pozostaje nie skalowany. Mikroserwisy mogą być napisane w różnych jezykach. Więc mamy sklep gdzie uwierzytelnienie jest napisane w _go_, a koszyk w _java_.
+
+### ECS
+
+Mechanizm AWS do uruchomienia obrazów dockerowych. AWS też pozwala na przechowywanie obrazów Dockerowych. Mamy cały czas możliwość skalowania tego klastra itd.
+
+### AWS Fargate
+
+Wirtualny klaster do zarządzania kontenerami. Mniej możliwości niż ECS ale szybciej się to stawia. Use Case: gdy chcemy na szybko coś postawić. Możemy dodać też do tego grupę skalującą.
+
+### Nanoserwisy 
+
+Jest to sama funkcjonalność, bez jakiekolwiek SO. Tak zwane usługi _Serverless_. Do tego w AWS wykorzystuje się _AWS Lambda_, która wspiera coraz więcej języków takich jak Node.js, Java, Go czy Ruby.
+
+Lambda to nic innego jak kod, wraz z bibliotekami oraz configuracją. Kompatybilna z prawie wszystkimi serwisami AWS. Ograniczenie Lambdy to maksymalne czas wykonania kodu w lambdzie to 15 minut. Nie płacimy za zasoby - gdy Lambda nie jest używana to nie płacimy.
